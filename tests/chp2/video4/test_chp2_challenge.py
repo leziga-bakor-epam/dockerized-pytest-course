@@ -1,4 +1,5 @@
 from scripts.chp2.video4.mapmaker_challenge import Point
+
 import pytest
 
 
@@ -11,6 +12,10 @@ def test_invalid_point_generation():
     with pytest.raises(ValueError) as exp:
         Point("Senegal", 99.6937, -189.44406)
     assert str(exp.value) == "Invalid latitude, longitude combination."
+
+    with pytest.raises(TypeError) as exp:
+        Point(5, 12.11386, -55.08269)
+    assert str(exp.value) == "Invalid name. City name must be of type string"
 
     """
     Your solution here! You will need to edit the following source code
